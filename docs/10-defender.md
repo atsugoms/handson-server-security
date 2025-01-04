@@ -25,19 +25,19 @@ Defender for Cloud は基本的にサブスクリプション単位で有効/無
 
 1. 上部の検索窓を使って Defender for Cloud を探して開く
 
-    ![](../images/ex03/001-cspm.png)
+    ![](../images/ex01/001-cspm.png)
 
 1. [管理]-[環境設定] を開く
 
-    ![](../images/ex03/002-cspm.png)
+    ![](../images/ex01/002-cspm.png)
 
 1. 管理グループを展開し、ハンズオンで利用するサブスクリプションを選択
 
-    ![](../images/ex03/003-cspm.png)
+    ![](../images/ex01/003-cspm.png)
 
 1. Defender CSPM を「オン」にして「保存」
 
-    ![](../images/ex03/004-cspm.png)
+    ![](../images/ex01/004-cspm.png)
 
 
 ## Defender for Servers の有効化
@@ -47,26 +47,26 @@ Defender for Servers には複数の機能が含まれるため、包含され�
 
 1. Defender CSPM と同じ画面にて、 CWP の Defender for Servers を「オン」に変更
 
-    ![](../images/ex03/201-servers.png)
+    ![](../images/ex01/201-servers.png)
 
 1. プランを P2 に変更
 
-    ![](../images/ex03/202-servers.png)
+    ![](../images/ex01/202-servers.png)
 
 1. 詳細設定を開く
 
-    ![](../images/ex03/203-servers.png)
+    ![](../images/ex01/203-servers.png)
 
 1. 以下の２機能を「オン」にして「続行」
 
     - マシンの脆弱性評価
     - Endpoint Protection
 
-    ![](../images/ex03/204-servers.png)
+    ![](../images/ex01/204-servers.png)
 
 1. 「保存」
 
-    ![](../images/ex03/205-servers.png)
+    ![](../images/ex01/205-servers.png)
 
 
 ## Defender for Endpoint の展開
@@ -80,11 +80,11 @@ Defender for Endpoint は自動展開となるため、特に操作は行いま�
 
 1. [設定]-[拡張機能とアプリケーション] を開く
 
-    ![](../images/ex03/301-endpoint.png)
+    ![](../images/ex01/301-endpoint.png)
 
 1. `MDE.Windows` がインストールされていることを確認
 
-    ![](../images/ex03/302-endpoint.png)
+    ![](../images/ex01/302-endpoint.png)
 
 
 ## 脆弱性評価の展開
@@ -116,7 +116,7 @@ Defender for Servers の個別適用は「全体適用して一部を除外」�
 
 1. Cloud Shell を起動
 
-    ![](../images/ex03/901-servers.png)
+    ![](../images/ex01/901-servers.png)
 
 1. 必要に応じて以下を操作
 

@@ -17,11 +17,11 @@ Microsoft Sentinel のワークスペースを作成する手順について学�
 
 1. 上部の検索窓を使って Log Analytics Workspace を探して開く
 
-    ![](../images/ex01/001-loganalyticsworkspace.png)
+    ![](../images/ex04/001-loganalyticsworkspace.png)
 
 1. 左上「作成」を選択
 
-    ![](../images/ex01/002-loganalyticsworkspace.png)
+    ![](../images/ex04/002-loganalyticsworkspace.png)
 
 1. Log Analytics Workspace を開き、「作成」を選択
     1. 基本
@@ -30,7 +30,7 @@ Microsoft Sentinel のワークスペースを作成する手順について学�
         - 名前: (任意)
         - リージョン: (任意)
     
-        ![](../images/ex01/003-loganalyticsworkspace.png)
+        ![](../images/ex04/003-loganalyticsworkspace.png)
 
     1. タグ
 
@@ -40,22 +40,22 @@ Microsoft Sentinel のワークスペースを作成する手順について学�
 
         「作成」を選択
 
-        ![](../images/ex01/004-loganalyticsworkspace.png)
+        ![](../images/ex04/004-loganalyticsworkspace.png)
 
 
 ## Microsoft Sentinel ワークスペース 作成
 
 1. Azure ポータルを開き、上部検索窓から Sentinel を検索して開く
 
-    ![](../images/ex01/101-sentinel.png)
+    ![](../images/ex04/101-sentinel.png)
 
 1. 左上「作成」を選択
 
-    ![](../images/ex01/102-sentinel.png)
+    ![](../images/ex04/102-sentinel.png)
 
 1. 作成済のワークスペースを選択して「追加」
 
-    ![](../images/ex01/103-sentinel.png)
+    ![](../images/ex04/103-sentinel.png)
 
 
 
