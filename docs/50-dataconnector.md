@@ -96,7 +96,87 @@ Microsoft Defender XDR はエンドポイント、ID、メール、アプリケ�
 
 ## Azure アクティビティ コネクタの有効化
 
+Azureで発生するイベント（リソースに対する操作）をSentinelへ収集します。
+本手順では [Azure アクティビティ コネクタ](https://learn.microsoft.com/azure/sentinel/data-connectors/azure-activity) を有効化します。
+
+1. Azure ポータルを開き、 Sentinel の ハンズオンで利用するワークスペースを開く
+
+1. [コンテンツ管理]-[コンテンツハブ] を開く
+
+    ![](../images/ex05/201-azureactivity.png)
+
+1. `Azure Activity` を検索して選択、「インストール」
+
+    ![](../images/ex05/202-azureactivity.png)
+
+1. インストール後、「管理」を開く
+
+    ![](../images/ex05/203-azureactivity.png)
+
+1. `Azure Activity` コネクタを選択して「コネクタページを開く」
+
+    ![](../images/ex05/204-azureactivity.png)
+
+1. 構成にある「Azure Policy の割り当てウィザードの起動」を選択
+
+    ![](../images/ex05/205-azureactivity.png)
+
+1. Azure ポリシーの作成
+
+    1. 基本
+
+        - スコープ： (本ハンズオンで利用するサブスクリプション)
+        - 割り当て名： `指定された Log Analytics ワークスペースにストリーミングするように Azure アクティビティ ログを構成します` (デフォルトまま)
+
+        ![](../images/ex05/206-azureactivity.png)
+
+    1. スコープ
+
+        デフォルトまま
+
+        ![](../images/ex05/207-azureactivity.png)
+
+    1. パラメーター
+
+        - プライマリ Log Analytics ワークスペース； （Sentinelワークスペースに利用している Log Analytics ワークスペース）
+
+        ![](../images/ex05/208-azureactivity.png)
+
+    1. 修復
+
+        - 修復タスクを作成する: `有効`
+            - 修復するポリシー: `指定された Log Analytics ワークスペースにストリーミングするように Azure アクティビティ ログを構成します`
+        - マネージドIDを作成する: `有効`
+            - マネージドIDの種類: `システム割り当てマネージドID`
+            - システム割り当てIDの場所: (リソースグループと同じ)
+
+        ![](../images/ex05/209-azureactivity.png)
+
+    1. 非準拠メッセージ
+
+        空欄（デフォルトまま）
+
+        ![](../images/ex05/210-azureactivity.png)
+
+    1. 確認および作成
+
+        作成するポリシー概要を確認して「作成」
+
+        ![](../images/ex05/211-azureactivity.png)
+
+
 
 ## Microsoft Defender for Cloud コネクタの有効化
 
+Azure、ハイブリッド、マルチクラウドのワークロード全体の脅威検出を Sentinel へ統合します。
+本手順では [Microsoft Defender for Cloud コネクタ](https://learn.microsoft.com/azure/sentinel/data-connectors/tenant-based-microsoft-defender-for-cloud) を有効化します。
 
+1. Azure ポータルを開き、 Sentinel の ハンズオンで利用するワークスペースを開く
+
+1. [コンテンツ管理]-[コンテンツハブ] を開く
+
+1. `Microsoft Defender for Cloud` を検索して選択、「インストール」
+
+1. インストール後、「管理」を開く
+
+1. 
