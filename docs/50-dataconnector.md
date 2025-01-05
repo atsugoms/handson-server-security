@@ -175,8 +175,22 @@ Azure、ハイブリッド、マルチクラウドのワークロード全体の
 
 1. [コンテンツ管理]-[コンテンツハブ] を開く
 
+    ![](../images/ex05/301-defenderforcloud.png)
+
 1. `Microsoft Defender for Cloud` を検索して選択、「インストール」
+
+    ![](../images/ex05/302-defenderforcloud.png)
 
 1. インストール後、「管理」を開く
 
-1. 
+    ![](../images/ex05/303-defenderforcloud.png)
+
+1. `Subscription-based Microsoft Defender for Cloud (Legacy)` コネクタを選択して「コネクタページを開く」をすべて選択
+
+    ![](../images/ex05/304-defenderforcloud.png)
+
+1. 構成から接続したいサブスクリプションのステータスを選択して接続に変更
+
+    ![](../images/ex05/305-defenderforcloud.png)
+
+
