@@ -19,6 +19,7 @@
 1. サーバーへの攻撃
     - 最終的に、攻撃者は主要サーバーに対して攻撃を行い、データの窃取や破壊、ランサムウェアの展開などを実行します。
     - Defender for Cloud
+    - Windows Security Events
 
 
 #### 🗒️ 目次
@@ -27,6 +28,7 @@
 1. [Microsoft Entra ID コネクタの有効化](#microsoft-entra-id-コネクタの有効化)
 1. [Azure アクティビティ コネクタの有効化](#azure-アクティビティ-コネクタの有効化)
 1. [Microsoft Defender for Cloud コネクタの有効化](#microsoft-defender-for-cloud-コネクタの有効化)
+1. [Windows Security イベント コネクタの有効化](#windows-security-イベント-コネクタの有効化)
 
 ## Microsoft Defender XDR コネクタの有効化
 
@@ -188,7 +190,7 @@ Azure、ハイブリッド、マルチクラウドのワークロード全体の
 
     ![](../images/ex05/303-defenderforcloud.png)
 
-1. `Subscription-based Microsoft Defender for Cloud (Legacy)` コネクタを選択して「コネクタページを開く」をすべて選択
+1. `Subscription-based Microsoft Defender for Cloud (Legacy)` コネクタを選択して「コネクタページを開く」を選択
 
     ![](../images/ex05/304-defenderforcloud.png)
 
@@ -196,4 +198,59 @@ Azure、ハイブリッド、マルチクラウドのワークロード全体の
 
     ![](../images/ex05/305-defenderforcloud.png)
 
+
+## Windows Security イベント コネクタの有効化
+
+Azure Monitor Agent を用いて Windows のセキュリティイベントを Sentinel へ統合します。
+本手順では [Windows Security イベント コネクタ](https://learn.microsoft.com/azure/sentinel/data-connectors/windows-security-events-via-ama) を有効化します。
+
+1. Azure ポータルを開き、 Sentinel の ハンズオンで利用するワークスペースを開く
+
+1. [コンテンツ管理]-[コンテンツハブ] を開く
+
+    ![](../images/ex05/401-winsecevt.png)
+
+1. `Windows Security Events` を検索して選択、「インストール」
+
+    ![](../images/ex05/402-winsecevt.png)
+
+1. インストール後、「管理」を開く
+
+    ![](../images/ex05/403-winsecevt.png)
+
+1. `Windows Security Events via AMA` コネクタを選択して「コネクタページを開く」を選択
+
+    ![](../images/ex05/404-winsecevt.png)
+
+1. 構成にある「Create data collection rule」を選択
+
+    ![](../images/ex05/405-winsecevt.png)
+
+1. データ収集ルールを作成
+
+    1. 基本
+
+        - ルール名: (任意)
+        - サブスクリプション: (本ハンズオンで利用しているサブスクリプション)
+        - リソースグループ: (本ハンズオンで利用しているリソースグループ)
+
+        ![](../images/ex05/406-winsecevt.png)
+
+    1. リソース
+
+        - 本ハンズオンで利用している仮想マシンのみ選択
+
+        ![](../images/ex05/407-winsecevt.png)
+
+    1. 収集
+
+        - `すべてのセキュリティイベント (All Security Events)`
+
+        ![](../images/ex05/408-winsecevt.png)
+
+    1. 確認と作成
+
+        設定内容を確認して「作成」
+
+        ![](../images/ex05/409-winsecevt.png)
 
