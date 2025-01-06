@@ -88,9 +88,9 @@ Defender for Endpoint に関するインシデントは統合されているた�
     - オートメーションルール名: `Close expected 'EICAR_Test_File' malware detection`
     - トリガー: `インシデントが作成されたとき`
     - 条件:
-        - インシデントプロバイダー: `次と等しい` `すべて`
-        - 分析ルール名: `次を含む` `すべて`
+        - インシデントプロバイダー: `次と等しい` `Microsoft Defender XDR`
         - ホスト名: `次と等しい` (仮想マシン名)
+        - タイトル: `次を含む` `EICAR_Test_File`
     - 操作:
         - `状態の変更` `終了`
         - `無害な陽性 - 不信ですが、予期されています`
@@ -134,23 +134,65 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
 1. [コンテンツ管理]-[コンテンツハブ] を開く
 
+    ![](../images/ex07/101-suspiciousaccess.png)
+
 1. `Microsoft Entra ID` を検索して選択、「管理」を開く
 
-1. 分析ルール `MFA Rejected by User` を検索して選択、「ルールの作成」を選択
+    ![](../images/ex07/102-suspiciousaccess.png)
+
+1. 分析ルール `Failed login attempts to Azure Portal` を検索して選択、「ルールの作成」を選択
+
+    ![](../images/ex07/103-suspiciousaccess.png)
 
 1. 分析ルールウィザード
 
     1. 全般
 
+        デフォルトままで「次へ」
+
+        - 名前: `Failed login attempts to Azure Portal`
+        - 説明: (任意)
+        - 重要度: `低`
+        - MITRE ATT&CK: → 今回のクエリがどのフェーズの検知なのかを定義
+            - `Credential Access`
+                - `T1110 - Brute Force`
+        - 状態: `有効`
+
+        ![](../images/ex07/104a-suspiciousaccess.png)
+
     1. ルールのロジックを設定
+
+        ルールのクエリでエラーが出ていないことを確認し、
+        結果シミュレーションにある「現在のデータでテストする」を実行
+
+        問題がなければ「次へ」
+
+        - ルールのクエリ: (デフォルトまま)
+        - アラートの拡張
+            - エンティティマッピング: → 今回のクエリでどのような情報が検知できるのか、エンティティ情報をマッピング
+                - `アカウント`
+                - `IP`
+            - アラートの詳細: → アラートを発砲する場合のフォーマットを指定
+
+        ![](../images/ex07/104b-suspiciousaccess.png)
 
     1. インシデントの設定
 
+        インシデントの設定を `有効` にして「次へ」
+
+        ![](../images/ex07/104c-suspiciousaccess.png)
+
     1. 自動応答
+
+        デフォルトままで「次へ」
+
+        ![](../images/ex07/104d-suspiciousaccess.png)
 
     1. 確認と作成
 
         内容を確認して「作成」
+
+        ![](../images/ex07/104e-suspiciousaccess.png)
 
 
 #### 検証用テストデータ作成
@@ -170,9 +212,73 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
 1. [脅威管理]-[インシデント] を開く
 
-1. 
+    ![](../images/ex07/110-suspiciousaccess.png)
+
+1. `Failed login attempts to Azure Portal` を選択、概要を確認
+
+    ![](../images/ex07/111-suspiciousaccess.png)
 
 #### インシデントのアサインと調査
 
+1. 担当と状態を変更
+
+    - 担当: `自分への割り当て`
+    - 状態: `アクティブ`
+
+    ![](../images/ex07/112-suspiciousaccess.png)
+
+1. 「すべての詳細を表示」を選択
+
+    ![](../images/ex07/113-suspiciousaccess.png)
+
+1. 概要画面
+
+    エンティティに分析ルールで定義したエンティティが表現されていることを確認。
+    この情報により、エンティティにある「IPアドレス」から「ユーザー」に対するAzureポータルへのログインが試行され、失敗したことがわかる。
+
+    ![](../images/ex07/114a-suspiciousaccess.png)
+
+1. エンティティ画面： ユーザー
+
+    「ユーザー」エンティティを選択して、詳細を確認
+
+    ![](../images/ex07/114b-suspiciousaccess.png)
+
+
+    右ペインにアクセスが試行されたユーザーに関する情報が表示されることを確認。
+    Entra ID に登録された情報が反映されるため、環境によって表示される情報は異なる。
+    組織情報や、連絡先情報などが確認可能。
+
+    ![](../images/ex07/115a-suspiciousaccess.png)
+
+1. エンティティ画面： IPアドレス
+
+    同じエンティティ画面で「IPアドレス」エンティティを選択
+
+    ![](../images/ex07/115b-suspiciousaccess.png)
+
+
+    右ペインにアクセス元の情報が表示されることを確認。
+    IPアドレスは地理的にどこからのアクセスなのか、といった情報も確認可能。
+
+    ![](../images/ex07/116a-suspiciousaccess.png)
 
 #### 作業コメントを残してクローズ
+
+1. 上部メニューの「アクティビティログ」を開く
+
+    ![](../images/ex07/120-suspiciousaccess.png)
+
+1. コメントを入力して「コメント」で保存
+
+    - `テストデータ生成のため対応不要`
+
+    ![](../images/ex07/121-suspiciousaccess.png)
+
+1. 状態を「終了」にして完了
+
+    - ステータス: `終了`
+    - 分類: `無害な要請`
+    - コメント: `テストデータ生成のため対応不要`
+
+    ![](../images/ex07/122-suspiciousaccess.png)
