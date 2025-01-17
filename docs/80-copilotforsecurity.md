@@ -4,15 +4,19 @@
 
 #### 💡 学習概要
 
+本セクションでは、Microsoft Security Copilot の利用方法について学習します。
+Security Computing Unit (SCU) のプロビジョニング、Security Copilot の利用、プロンプトブックの参照と利用、SCU の使用量の確認、SCU の削除の手順を順を追って学習していきます。
+本セクションを学習することで、Security Copilot を効果的に活用し、セキュリティ運用を強化する方法の習得を目指します。
 
 
 #### 🗒️ 目次
 
-1. Security Computing Unit (SCU) の プロビジョニング
-1. Security Copilot の利用
-1. プロンプトブックの参照と利用
-1. SCU 使用量の確認
-1. SCU の削除
+1. [Security Computing Unit (SCU) の プロビジョニング](#security-computing-unit-scu-の-プロビジョニング)
+1. [Security Copilot の利用](#security-copilot-の利用)
+1. [プロンプトブックの参照と利用](#プロンプトブックの参照と利用)
+1. [SCU 使用量の確認](#scu-使用量の確認)
+1. [SCU の削除](#scu-の削除)
+
 
 ## Security Computing Unit (SCU) の プロビジョニング
 
