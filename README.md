@@ -1,5 +1,7 @@
 # Server Security Hands-on
 
+![cover](./images/coverimage.png)
+
 ## 目的
 
 本ハンズオンを通して サーバーサイド の セキュリティ強化方法 について学びます。
