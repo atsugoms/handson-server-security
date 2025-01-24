@@ -1,4 +1,4 @@
-# Ex01: Microsoft Sentinel 利用環境の準備
+# Ex04: Microsoft Sentinel 利用環境の準備
 
 #### ⏳ 推定時間
 

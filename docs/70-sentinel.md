@@ -1,4 +1,4 @@
-# ExXX: Microsoft Sentinel を使った インシデント対応
+# Ex07: Microsoft Sentinel を使った インシデント対応
 
 #### ⏳ 推定時間
 

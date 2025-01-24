@@ -1,4 +1,4 @@
-# ExXX: Microsoft Sentinel へログの集約
+# Ex05: Microsoft Sentinel へログの集約
 
 #### ⏳ 推定時間
 

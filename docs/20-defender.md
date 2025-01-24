@@ -1,4 +1,4 @@
-# ExXX: Defender for Cloud の活用
+# Ex02: Defender for Cloud の活用
 
 #### ⏳ 推定時間
 

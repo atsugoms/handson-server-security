@@ -1,4 +1,4 @@
-# ExXX: Microsoft Security Copilot の利用
+# Ex08: Microsoft Security Copilot の利用
 
 #### ⏳ 推定時間
 

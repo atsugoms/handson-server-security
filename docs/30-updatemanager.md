@@ -1,4 +1,4 @@
-# ExXX: Update Manager を使った更新管理
+# Ex03: Update Manager を使った更新管理
 
 #### ⏳ 推定時間
 
