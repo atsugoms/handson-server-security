@@ -1,6 +1,8 @@
-# ExXX: Microsoft Sentinel を使った インシデント対応
+# Ex07: Microsoft Sentinel を使った インシデント対応
 
-#### ⏳ 推定時間: 40分
+#### ⏳ 推定時間
+
+- 30 ~ 45分
 
 #### 💡 学習概要
 
@@ -20,7 +22,7 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
 #### 検証用テストデータ作成
 
-1. 検証したい仮想マシンへ接続
+1. 検証仮想マシンへ接続
 
 1. EICAR テストファイルを作成
 
@@ -34,20 +36,48 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
 1. 自動的に検疫されたことを確認
 
+> [!INFO]  
+> 反映は 10分 程度かかる
+
+> [!INFO]  
+> 上記テストデータがうまく反映しない場合、 Defender for Cloud の「サンプルアラート」を利用する。 
+> 1. Microsoft Defender for Cloud を開く
+> 1. [全般]-[セキュリティ警告] を開く
+> 1. 「サンプルのアラート」を選択
+> 1. サンプルのアラート作成で、以下を設定して「サンプルアラートの作成」
+>     - サブスクリプション: (本ハンズオンで利用しているサブスクリプション)
+>     - Defender for Cloud プラン: `仮想マシン`
+>
+> 反映には 10分 程度かかる
+
 #### インシデントを確認
 
 1. Azureポータルを開き、 Microsoft Sentinel を開く
 
 1. [脅威管理]-[インシデント] を開く
 
-    ![](../images/ex07/001-malware.png)
+    ![](../images/ex07/001a-malware.png)
 
 1. インシデント `'EICAR_Test_File' malware was prevented on one endpoint` を選択、概要を確認
 
     (*) 状態=完了がフィルターされて表示されていない場合があります。
         見つからない場合、状態フィルターに完了を追加して再度確認します。
 
-    ![](../images/ex07/002-malware.png)
+    ![](../images/ex07/001b-malware.png)
+<!-- 
+(*) インシデントは即時で連携されないため、反映していない場合、以下の手順で仮のインシデントを作成します。
+
+1. [脅威管理]-[インシデント] の画面にて、 「＋インシデントの作成」を選択
+
+    ![](../images/ex07/002a-malware.png)
+
+1. 以下を入力して「作成」
+
+    - タイトル: `'EICAR_Test_File' malware was prevented on one endpoint`
+    - 重大度: `情報提供`
+
+    ![](../images/ex07/002b-malware.png)
+-->
 
 
 #### インシデントのアサインと調査
@@ -128,6 +158,18 @@ Defender for Endpoint に関するインシデントは統合されているた�
 コンテンツハブから登録したソリューションに含まれる「分析ルール」を利用することでインシデントを見つけ出します。
 本手順では分析ルールを追加したうえで、テストデータを作成、インシデントの検知～対応を行っていきます。
 
+
+#### 検証用テストデータ作成
+
+1. 任意のブラウザをシークレットモードで起動
+
+1. Azureポータルへアクセス
+
+1. 本ハンズオンで利用しているユーザーでログインを試行
+
+1. **MFAを意図的に拒否**
+
+
 #### 分析ルールの設定
 
 
@@ -141,6 +183,70 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
     ![](../images/ex07/102-suspiciousaccess.png)
 
+1. 分析ルール `MFA Rejected by User` を検索して選択、「ルールの作成」を選択
+
+    ![](../images/ex07/103a-suspiciousaccess.png)
+
+1. 分析ルールウィザード
+
+    1. 全般
+
+        デフォルトままで「次へ」
+
+        ![](../images/ex07/103b-suspiciousaccess.png)
+
+    1. ルールのロジックを設定
+
+        - ルールクエリ: 閾値（ `riskScoreCutoff` ）を `0` 以上を検出するよう修正
+
+            ```
+            // ------- ▼ MOD Start ▼ ------- 
+            // let riskScoreCutoff = 3; 
+            let riskScoreCutoff = 0;
+            // ------- ▲ MOD End ▲ ------- 
+            SigninLogs
+            | where ResultType == 500121
+            | extend additionalDetails_ = tostring(Status.additionalDetails)
+
+            ... (省略) ...
+
+            on FailedIPAddress, Name
+            | extend UEBARiskScore = MaxInvestigationScore
+            | project-away *1
+            join from output
+            // ------- ▼ MOD Start ▼ ------- 
+            // | where  UEBARiskScore > riskScoreCutoff
+            | where  UEBARiskScore >= riskScoreCutoff
+            // ------- ▲ MOD End ▲ ------- 
+            | sort by UEBARiskScore desc 
+            ```
+
+        - クエリのスケジュール設定: 
+            - 実行間隔: `5分`
+            - 過去データ参照: `5分`
+
+        ![](../images/ex07/103c-suspiciousaccess.png)
+
+    1. インシデントの設定
+
+        デフォルトままで「次へ」
+
+        ![](../images/ex07/103d-suspiciousaccess.png)
+
+    1. 自動応答
+
+        デフォルトままで「次へ」
+
+        ![](../images/ex07/103e-suspiciousaccess.png)
+
+    1. 確認と作成
+
+        内容を確認して「保存」
+
+        ![](../images/ex07/103f-suspiciousaccess.png)
+
+
+<!--
 1. 分析ルール `Failed login attempts to Azure Portal` を検索して選択、「ルールの作成」を選択
 
     ![](../images/ex07/103-suspiciousaccess.png)
@@ -194,20 +300,13 @@ Defender for Endpoint に関するインシデントは統合されているた�
         内容を確認して「作成」
 
         ![](../images/ex07/104e-suspiciousaccess.png)
-
-
-#### 検証用テストデータ作成
-
-1. 任意のブラウザをシークレットモードで起動
-
-1. Azureポータルへアクセス
-
-1. 本ハンズオンで利用しているユーザーでログインを試行
-
-1. **MFAを意図的に拒否**
+ -->
 
 
 #### インシデントを確認
+
+> [!INFO]  
+> 分析ルール作成から、反映までは 5分 程度かかる
 
 1. Azureポータルを開き、 Microsoft Sentinel を開く
 
@@ -215,9 +314,9 @@ Defender for Endpoint に関するインシデントは統合されているた�
 
     ![](../images/ex07/110-suspiciousaccess.png)
 
-1. `Failed login attempts to Azure Portal` を選択、概要を確認
+1. `MFA Rejected by User` を選択、概要を確認
 
-    ![](../images/ex07/111-suspiciousaccess.png)
+    ![](../images/ex07/131-suspiciousaccess.png)
 
 #### インシデントのアサインと調査
 
@@ -226,55 +325,53 @@ Defender for Endpoint に関するインシデントは統合されているた�
     - 担当: `自分への割り当て`
     - 状態: `アクティブ`
 
-    ![](../images/ex07/112-suspiciousaccess.png)
+    ![](../images/ex07/132-suspiciousaccess.png)
 
 1. 「すべての詳細を表示」を選択
 
-    ![](../images/ex07/113-suspiciousaccess.png)
+    ![](../images/ex07/133-suspiciousaccess.png)
 
 1. 概要画面
 
     エンティティに分析ルールで定義したエンティティが表現されていることを確認。
-    この情報により、エンティティにある「IPアドレス」から「ユーザー」に対するAzureポータルへのログインが試行され、失敗したことがわかる。
+    この情報により、エンティティにある「IPアドレス」から「ユーザー」に対するログインが試行され、ユーザーによるMFA拒否で失敗したことがわかる。
 
-    ![](../images/ex07/114a-suspiciousaccess.png)
-
-1. エンティティ画面： ユーザー
+    ![](../images/ex07/134-suspiciousaccess.png)
 
     「ユーザー」エンティティを選択して、詳細を確認
 
-    ![](../images/ex07/114b-suspiciousaccess.png)
+    ![](../images/ex07/134a-suspiciousaccess.png)
 
+1. エンティティ画面： ユーザー
 
     右ペインにアクセスが試行されたユーザーに関する情報が表示されることを確認。
     Entra ID に登録された情報が反映されるため、環境によって表示される情報は異なる。
     組織情報や、連絡先情報などが確認可能。
 
-    ![](../images/ex07/115a-suspiciousaccess.png)
-
-1. エンティティ画面： IPアドレス
+    ![](../images/ex07/135-suspiciousaccess.png)
 
     同じエンティティ画面で「IPアドレス」エンティティを選択
 
-    ![](../images/ex07/115b-suspiciousaccess.png)
+    ![](../images/ex07/135a-suspiciousaccess.png)
 
+1. エンティティ画面： IPアドレス
 
     右ペインにアクセス元の情報が表示されることを確認。
     IPアドレスは地理的にどこからのアクセスなのか、といった情報も確認可能。
 
-    ![](../images/ex07/116a-suspiciousaccess.png)
+    ![](../images/ex07/136-suspiciousaccess.png)
 
 #### 作業コメントを残してクローズ
 
 1. 上部メニューの「アクティビティログ」を開く
 
-    ![](../images/ex07/120-suspiciousaccess.png)
+    ![](../images/ex07/141-suspiciousaccess.png)
 
 1. コメントを入力して「コメント」で保存
 
     - `テストデータ生成のため対応不要`
 
-    ![](../images/ex07/121-suspiciousaccess.png)
+    ![](../images/ex07/142-suspiciousaccess.png)
 
 1. 状態を「終了」にして完了
 
@@ -282,4 +379,4 @@ Defender for Endpoint に関するインシデントは統合されているた�
     - 分類: `無害な要請`
     - コメント: `テストデータ生成のため対応不要`
 
-    ![](../images/ex07/122-suspiciousaccess.png)
+    ![](../images/ex07/143-suspiciousaccess.png)

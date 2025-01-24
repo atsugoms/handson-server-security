@@ -1,5 +1,39 @@
 # 前提環境の構築
 
+#### ⏳ 推定時間
+
+- 3 ~ 5分
+
+#### 💡 学習概要
+
+本ハンズオンでは単純な仮想マシンを保護対象とし、さまざまなセキュリティ対策を行っていきます。
+準備する環境は以下のような単純な環境です。
+
+![](../images/ex00/0000-env.png)
+
+「ARMテンプレート」 または 「terraform」 を利用してデプロイが可能です。
+どちらかの方法でデプロイを行います。
+
+#### 🗒️ 目次
+
+- [ARMテンプレート を使って デプロイ](#armテンプレート-を使って-デプロイ)
+- [terraform を使って デプロイ](#terraform-を使って-デプロイ)
+
+## ARMテンプレート を使って デプロイ
+
+1. 以下のリンクから カスタムデプロイ を開く
+
+    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fatsugoms%2Fhandson-server-security%2Frefs%2Fheads%2Fdevelop%2Finfra%2Farm%2Ftemplate.json)
+
+    (*) 直接ファイル展開したい場合: [🗒️ JSONファイル](https://raw.githubusercontent.com/atsugoms/handson-server-security/refs/heads/develop/infra/arm/template.json) 
+
+1. カスタムデプロイ
+
+    入力項目を埋めて「確認と作成」
+
+
+## terraform を使って デプロイ
+
 1. Azure ポータルを開く
 
     https://portal.azure.com/
@@ -20,10 +54,10 @@
     git clone https://github.com/atsugoms/handson-server-security.git
     ```
 
-1. `infra` フォルダへ移動
+1. `infra/terraform` フォルダへ移動
 
     ```
-    cd ./handson-server-security/infra/
+    cd ./handson-server-security/infra/terraform/
     ```
 
 1. 変数ファイルを作成
@@ -34,7 +68,7 @@
 
     ファイルの内容は以下の通り
 
-    `/infra/terraform.tfvars`
+    `/infra/terraform/terraform.tfvars`
     ```
     project         = "<PROJECT_NAME>"
     environment     = "<ENVIRONMENT_NAME>"

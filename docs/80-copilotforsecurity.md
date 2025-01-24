@@ -1,6 +1,8 @@
-# ExXX: Microsoft Security Copilot の利用
+# Ex08: Microsoft Security Copilot の利用
 
-#### ⏳ 推定時間: 40分
+#### ⏳ 推定時間
+
+- 12 ~ 20分
 
 #### 💡 学習概要
 
@@ -34,7 +36,7 @@ Security Computing Unit (SCU) のプロビジョニング、Security Copilot の
     - 容量リージョン: (プロンプトの評価場所を設定すると自動入力される)
     - プロンプトの評価場所: `Australia`
     - ✅ この場所のトラフィックが多すぎる場合は、Copilotが世界中の任意の場所でプロンプトを評価することを許可します
-    - セキュリティコンピューティングユニット: `1`
+    - セキュリティコンピューティングユニット: `3`
 
     ![](../images/ex08/001-provision.png)
 

@@ -1,6 +1,8 @@
-# ExXX: Microsoft Sentinel へログの集約
+# Ex05: Microsoft Sentinel へログの集約
 
-#### ⏳ 推定時間: 25分
+#### ⏳ 推定時間
+
+- 20 ~ 30分
 
 #### 💡 学習概要
 
@@ -135,7 +137,7 @@ Azureで発生するイベント（リソースに対する操作）をSentinel�
 
         ![](../images/ex05/206-azureactivity.png)
 
-    1. スコープ
+    1. 詳細
 
         デフォルトまま
 
@@ -254,3 +256,21 @@ Azure Monitor Agent を用いて Windows のセキュリティイベントを Se
 
         ![](../images/ex05/409-winsecevt.png)
 
+
+## 接続済みデータコネクタの確認
+
+1. Azure ポータルを開き、 Sentinel の ハンズオンで利用するワークスペースを開く
+
+1. [構成]-[データコネクタ] を開く
+
+    ![](../images/ex05/501-dataconnector.png)
+
+1. 設定した接続が有効になっていることを確認
+
+    - Defender for XDR
+    - Microsoft Entra ID
+    - Azure Activity
+    - Subscription-based Microsoft Defender for Cloud
+    - Windows Security Events via AMA
+
+    ![](../images/ex05/502-dataconnector.png)
