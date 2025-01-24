@@ -38,20 +38,20 @@
 ## ハンズオン 目次
 
 事前準備
-1. [ハンズオン環境準備](./docs/00-init-infra.md)
+1. [ハンズオン環境準備](./docs/00-init-infra.md) （3 ~ 5分）
 
 ハンズオン手順
 
 - Defender for Cloud
-    1. [Defender for Cloud の適用](./docs/10-defender.md)
-    1. [Defender for Cloud の活用](./docs/20-defender.md)
+    1. [Defender for Cloud の適用](./docs/10-defender.md) （10 ~ 15分）
+    1. [Defender for Cloud の活用](./docs/20-defender.md) （10 ~ 15分）
 - Azure Update Manager
-    1. [Update Manager の利用](./docs/30-updatemanager.md)
+    1. [Update Manager の利用](./docs/30-updatemanager.md) （10 ~ 15分）
 - Microsoft Sentinel
-    1. [Microsoft Sentinel の構築](./docs/40-sentinel.md)
-    1. [Microsoft Sentinel へログの集約](./docs/50-dataconnector.md)
-    1. [UEBAの有効化](./docs/60-ueba.md)
-    1. [Microsoft Sentinel を使った インシデント対応](./docs/70-sentinel.md)
+    1. [Microsoft Sentinel の構築](./docs/40-sentinel.md) （3 ~ 5分）
+    1. [Microsoft Sentinel へログの集約](./docs/50-dataconnector.md) （20 ~ 30分）
+    1. [UEBAの有効化](./docs/60-ueba.md) （2 ~ 5分）
+    1. [Microsoft Sentinel を使った インシデント対応](./docs/70-sentinel.md) （30 ~ 45分）
 - Microsoft Security Copilot
-    1. [Microsoft Security Copilot の活用](./docs/80-copilotforsecurity.md)
+    1. [Microsoft Security Copilot の活用](./docs/80-copilotforsecurity.md) （12 ~ 20分）
 
