@@ -23,6 +23,10 @@ Defender for Cloud に含まれる機能を有効化し、活用していく方�
 
 - Defender for Endpoint (拡張機能に `MDE.Windows` ) が導入されていること
 
+> [!IMPORTANT]
+> `MDE.Windows` がまだインストールされていない場合、この手順をいったん飛ばしてあとから実施します。
+
+
 ### 動作確認
 
 #### 検証用テストデータ作成
