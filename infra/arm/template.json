@@ -36,7 +36,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2024-03-01",
             "name": "[parameters('vnet_nsg_name')]",
-            "location": "japaneast",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "securityRules": []
             }
@@ -45,7 +45,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2024-03-01",
             "name": "[parameters('vm_ip_name')]",
-            "location": "japaneast",
+            "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Standard",
                 "tier": "Regional"
@@ -65,7 +65,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2024-07-01",
             "name": "[parameters('vm_name')]",
-            "location": "japaneast",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('vm_nic_name'))]"
             ],
@@ -141,7 +141,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2024-03-01",
             "name": "[parameters('vnet_name')]",
-            "location": "japaneast",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('vnet_nsg_name'))]"
             ],
@@ -181,7 +181,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2024-03-01",
             "name": "[parameters('vm_nic_name')]",
-            "location": "japaneast",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('vm_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet_name'), 'default-snet')]"
