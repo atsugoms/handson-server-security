@@ -60,6 +60,9 @@
     1. [Microsoft Sentinel の構築](./docs/40-sentinel.md) （3 ~ 5分）
     1. [Microsoft Sentinel へログの集約](./docs/50-dataconnector.md) （20 ~ 30分）
     1. [UEBAの有効化](./docs/60-ueba.md) （2 ~ 5分）
+
+        ＝可能ならここでいったん区切って日を改める。データ収集をさせるため。＝
+
     1. [Microsoft Sentinel を使った インシデント対応](./docs/70-sentinel.md) （30 ~ 45分）
 - Microsoft Security Copilot
     1. [Microsoft Security Copilot の活用](./docs/80-copilotforsecurity.md) （12 ~ 20分）
