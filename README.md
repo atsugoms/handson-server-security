@@ -1,6 +1,8 @@
 # Server Security Hands-on
 
-![cover](./images/coverimage.png)
+<div style="text-align:center;">
+<img src="./images/coverimage.png" />
+</div>
 
 ## 目的
 
