@@ -40,7 +40,7 @@
     - `セキュリティ管理者 (Security Administrator)` (*2) (*3)
 
 (*1) Defender の設定変更操作に必要。 共同作作成者だと設定変更ができない。  
-(*2) Sentinel の データコネクタ 設定 に必要。
+(*2) Sentinel の データコネクタ 設定 に必要。  
 (*3) Privileged Identity Management (PIM) を有効化している場合、 `グローバル管理者` が必要
 
 
@@ -59,11 +59,12 @@
 - Microsoft Sentinel
     1. [Microsoft Sentinel の構築](./docs/40-sentinel.md) （3 ~ 5分）
     1. [Microsoft Sentinel へログの集約](./docs/50-dataconnector.md) （20 ~ 30分）
-    1. [UEBAの有効化](./docs/60-ueba.md) （2 ~ 5分）
-
-        ＝可能ならここでいったん区切って日を改める。データ収集をさせるため。＝
-
+    1. [UEBAの有効化](./docs/60-ueba.md) （2 ~ 5分）  
+        ＝可能ならここでいったん区切って日を改める。データ収集するため。＝
     1. [Microsoft Sentinel を使った インシデント対応](./docs/70-sentinel.md) （30 ~ 45分）
 - Microsoft Security Copilot
     1. [Microsoft Security Copilot の活用](./docs/80-copilotforsecurity.md) （12 ~ 20分）
 
+ハンズオン後
+
+1. [後片付け](./docs/99-cleanup.md)
