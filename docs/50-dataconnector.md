@@ -26,18 +26,20 @@
 
 #### 🗒️ 目次
 
+<!--
 1. [Microsoft Defender XDR コネクタの有効化 (オプション)](#microsoft-defender-xdr-コネクタの有効化-オプション)
+-->
 1. [Microsoft Entra ID コネクタの有効化](#microsoft-entra-id-コネクタの有効化)
 1. [Azure アクティビティ コネクタの有効化](#azure-アクティビティ-コネクタの有効化)
 1. [Microsoft Defender for Cloud コネクタの有効化](#microsoft-defender-for-cloud-コネクタの有効化)
 1. [Windows Security イベント コネクタの有効化](#windows-security-イベント-コネクタの有効化)
 
-> [!WARNING]
+> [!WARNING]  
 > Microsoft Defender XDR, Microsoft Entra ID, Azure アクティビティ 
 > に関してはテナント全体が Log Analytics ワークスペース へ保管されます。
 > 保管されるデータ容量および発生するコストにご注意ください。
 
-
+<!--
 ## Microsoft Defender XDR コネクタの有効化 (オプション)
 
 Microsoft Defender XDR はエンドポイント、ID、メール、アプリケーションを保護し、巧妙な脅威の検出、防止、調査、自動的な対応に役立つ情報を提供します。
@@ -68,7 +70,7 @@ Microsoft Defender XDR はエンドポイント、ID、メール、アプリケ�
 1. 構成にある「イベントの接続」で「Microsoft Defender for Endpoint」をすべて選択して「変更の適用」
 
     ![](../images/ex05/006-defenderxdr.png)
-
+-->
 
 ## Microsoft Entra ID コネクタの有効化
 
