@@ -40,6 +40,19 @@ Defender for Endpoint に関するインシデントは統合されているた�
 > 反映は 10分 程度かかります。
 
 > [!IMPORTANT]  
+> 上記テストデータがうまく反映しない場合(または1日開催の場合)、「Microsoft Sentinel Training Lab」を利用します。
+> 1. Azure ポータルを開き、上部検索窓で "Microsoft Sentinel Training Lab" を検索、開く（Sentinel の コンテンツハブ からでも開ける）
+> 1. マーケットプレースの「Microsoft Sentinel Training Lab Solution」を「作成」
+> 1. 基本： リソースグループ、ワークスペースを指定
+> 1. ワークブック： 表示名はデフォルトまま
+> 1. 分析： 特に指定なし
+> 1. プレイブック： プレイブック名はデフォルトまま
+> 1. 「作成」
+>
+> 反映には 20分 程度かかります。
+
+<!--
+> [!IMPORTANT]  
 > 上記テストデータがうまく反映しない場合、 Defender for Cloud の「サンプルアラート」を利用します。
 > 1. Microsoft Defender for Cloud を開く
 > 1. [全般]-[セキュリティ警告] を開く
@@ -49,6 +62,7 @@ Defender for Endpoint に関するインシデントは統合されているた�
 >     - Defender for Cloud プラン: `仮想マシン`
 >
 > 反映には 10分 程度かかります。
+-->
 
 #### インシデントを確認
 
