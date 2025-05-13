@@ -39,6 +39,10 @@
 > に関してはテナント全体が Log Analytics ワークスペース へ保管されます。
 > 保管されるデータ容量および発生するコストにご注意ください。
 
+> [!NOTE]  
+> Microsoft 365 E5 利用による特典は以下を参照
+> - [Microsoft 365 E5、A5、F5、G5 のお客様向けの Microsoft Sentinel 特典](https://azure.microsoft.com/ja-jp/pricing/offers/sentinel-microsoft-365-offer)
+
 <!--
 ## Microsoft Defender XDR コネクタの有効化 (オプション)
 
